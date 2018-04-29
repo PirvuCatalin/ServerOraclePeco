@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.net.ServerSocket;
 import java.io.DataInputStream;
 
+
 public class Receiver {
     private Database db = new Database();
     String token = "";
@@ -39,6 +40,7 @@ public class Receiver {
                     System.out.println("Database error");
                 }
             }
+            // when new car comes to the station
             if (msg_received.charAt(0) == 'D') {
                 String licence = msg_received.substring(1);
                 System.out.println(licence);
@@ -47,8 +49,23 @@ public class Receiver {
                     System.out.println("The user is not registered");
                 }
                 else {
-                    // TODO implement pusher app service
-                    System.out.println("Send my notification");
+                    // DONE implement pusher app service
+                    Pusher.send("refill",result);
+                    System.out.println("Sent my refill notification");
+                }
+            }
+            // when the car is leaving the station
+            if (msg_received.charAt(0) == 'L') {
+                String licence = msg_received.substring(1);
+                System.out.println(licence);
+                String result = db.searchForLicence(licence);
+                if (result.equalsIgnoreCase("NULLTOKEN")) {
+                    System.out.println("The user is not registered");
+                }
+                else {
+                    // DONE implement pusher app service
+                    Pusher.send("leaving",result);
+                    System.out.println("Sent my leaving notification");
                 }
             }
 
