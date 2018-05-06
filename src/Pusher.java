@@ -14,7 +14,7 @@ public class Pusher {
         HttpPost post = new HttpPost("https://fcm.googleapis.com/fcm/send");
         post.setHeader("Content-type", "application/json");
         // Server key (Firebase)
-        post.setHeader("Authorization", "key=AAAAFYWN4_0:APA91bGA2f7Rvae4JcvJcsdqKoTvWnquVVp3KE5BAWZQ4tC5BCN2xRqOPqMZvGH4XAaz2d67SHqKzEshlfv8yrNMvg52jhmE8MiGshzTKOXETWBzdHP9OsI728lBd6YnXqFFhcPK3bxO");
+        post.setHeader("Authorization", "key=AAAAqM3PkjE:APA91bHU21VXuRedSVEjfw-Udy_N6ztAhGTQqIiRdDV_AHLTjX0B3XPC7jcuRbKS-TlHu6J0zcebkPM0QBfpSFpqDMpLnhUhYIrVZyvygvNt1c2zNmU6ugf1OaQb8Ltv11wEeLfgVIT_");
 
         JSONObject message = new JSONObject();
         // Token - where to send the notification
